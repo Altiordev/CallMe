@@ -1,0 +1,136 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+}
+
+body {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+a {
+    cursor: auto;
+}
+
+.phone-wrapper {
+    position: relative;
+    width: 300px;
+    height: 300px;
+    border-radius: 50%;
+    background-color: cadetblue;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+.phone {
+    height: 150px;
+    animation: rotatePhone 1s infinite alternate;
+}
+
+.phone-wrapper:hover .phone {
+    animation: phoneScale 0.35s ease-in 1 alternate forwards;
+}
+
+.phone-wrapper::before {
+    content: '';
+    position: absolute;
+    width: 95%;
+    height: 95%;
+    background-color: transparent;
+    border-radius: 50%;
+    border: 7px solid cadetblue;
+}
+
+.phone-wrapper:hover::before {
+    animation: pulse 1s ease-in infinite;
+}
+
+.phone-wrapper::after {
+    content: 'CALL ME';
+    font-family: Helvetica, sans-serif;
+    color: white;
+    font-size: 50px;
+    position: absolute;
+    transform: scale(0);
+    transition: 0.5s;
+    animation: textScalereverse .4s ease-in 1 alternate;
+}
+
+.phone-wrapper:hover::after {
+    animation: textScale .6s ease-in 1 alternate forwards;
+}
+
+@keyframes textScale {
+    from {
+        transform: scale(0);
+    }
+    to {
+        transform: scale(1);
+    }
+}
+
+@keyframes textScalereverse {
+    from {
+        transform: scale(1);
+    }
+    to {
+        transform: scale(0);
+    }
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+        opacity: 0.8;
+    }
+    25% {
+        opacity: 0.6;
+        border: 5px solid cadetblue;
+    }
+    50% {
+        opacity: 0.5;
+        border: 3px solid cadetblue;
+    }
+    70% {
+        opacity: 0.3;
+        border: 1px solid cadetblue;
+    }
+    100% {
+        transform: scale(1.4);
+        opacity: 0;
+        border: 0.5px solid cadetblue;
+    }
+}
+
+@keyframes phoneScale {
+    from {
+        transform: scale(1);
+    }
+    to {
+        transform: scale(0);
+    }
+}
+
+@keyframes phoneScalereverse {
+    from {
+        transform: scale(0);
+    }
+    to {
+        transform: scale(1);
+    }
+}
+
+@keyframes rotatePhone {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(90deg);
+    }
+}
